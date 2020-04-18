@@ -41,16 +41,14 @@ public class Solution {
 
 		System.out.println("Adjacency map : " + adjancency);
 		
-		System.out.println("Non Adjacency data is below: ");
-
-		List<List<Integer>> nonAdjaceny = adjancency.entrySet().stream().map(entry -> {
+		Map<Integer, List<Integer>> nonAdjacencyMap = new HashMap<Integer, List<Integer>>();
+		adjancency.entrySet().stream().forEach(entry -> {
 			List<Integer> cloned = new ArrayList<>(arrList);
 			cloned.remove(entry.getKey());
 			cloned.removeAll(entry.getValue());
-			return cloned;
-		}).collect(Collectors.toList());
-		
-		System.out.println(nonAdjaceny);
+			nonAdjacencyMap.put(entry.getKey(), cloned);
+		});
+		System.out.println("Non Adjacency data is below: " + nonAdjacencyMap);		
 		
 		return maxSum;
 	}
