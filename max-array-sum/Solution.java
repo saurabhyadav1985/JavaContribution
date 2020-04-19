@@ -50,7 +50,7 @@ public class Solution {
 		});
 		System.out.println("Non Adjacency data is below: " + nonAdjacencyMap);
 
-		nonAdjacencyMap.entrySet().stream().map(entry -> prepareSubSets(entry, nonAdjacencyMap, adjancency))
+		nonAdjacencyMap.entrySet().stream().map(entry -> prepareSubSets(entry, nonAdjacencyMap, adjancency, arr.length))
 				.forEach(i->System.out.println(" "));
 
 		System.out.println(solutions);
@@ -60,7 +60,7 @@ public class Solution {
 	static List<Integer> alreadyProcess  = new ArrayList<Integer>();
 	static List<Set<Integer>> solutions  = new ArrayList<>();
 	static Set<Integer> prepareSubSets(Entry<Integer, List<Integer>> entry, Map<Integer, List<Integer>> nonAdjacencyMap,
-			Map<Integer, List<Integer>> adjancency) {
+			Map<Integer, List<Integer>> adjancency, int length) {
 		Set<Integer> subset = new HashSet<Integer>();
 		subset.add(entry.getKey());
 		Set<Integer> dontAdd = new HashSet<Integer>();
@@ -81,7 +81,7 @@ public class Solution {
 					if (!subset.contains(int2) && !dontAdd.contains(int2)) {
 						subset.add(int2);
 						solutions.add(new HashSet<>(subset));
-						if (subset.size() + dontAdd.size() == 5) {
+						if (subset.size() + dontAdd.size() == length) {
 							for (Integer int3 : nonAdjacencyMap.get(int2)) {
 								dontAdd.addAll(adjancency.get(int3));
 								if (!subset.contains(int3) && !dontAdd.contains(int3)) {
