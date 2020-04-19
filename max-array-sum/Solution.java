@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Solution {
@@ -54,6 +55,12 @@ public class Solution {
 				.forEach(i->System.out.println(" "));
 
 		System.out.println(solutions);
+		
+		for(Set<Integer> solution : solutions) {
+			int sum =solution.stream().mapToInt(x-> x).sum();
+			if(sum > maxSum) maxSum =sum;
+		}
+
 		return maxSum;
 	}
 
