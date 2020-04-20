@@ -19,9 +19,33 @@ public class Solution {
 		List<Integer> arrList = Arrays.stream(arr).boxed().collect(Collectors.toList());
 		System.out.println("Input : " + arrList);	
 		
-		int maxSum = 0;
+		int exc = 0;
+		int inc = 0;
+		int maxSum =0;
+		
+		for(int index : arr) {
+			inc = exc + index;
+			if (max(exc, inc) > maxSum) {
+				maxSum = max(exc, inc);
+			}
+			
+			exc = inc;
+		}
 		return maxSum;
 	}
+	
+	
+
+	private static int max(int exc, int inc) {
+		if(exc > inc) {
+			return exc;
+		}
+		else {
+			return inc;
+		}
+	}
+
+
 
 	private static final Scanner scanner = new Scanner(System.in);
 
