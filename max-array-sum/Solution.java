@@ -6,16 +6,10 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Solution {
 
@@ -26,30 +20,6 @@ public class Solution {
 		System.out.println("Input : " + arrList);	
 		
 		int maxSum = 0;
-		Map<Integer, List<Integer>> adjancency = new HashMap<>();
-
-		for (int index = 0; index < arr.length; index++) {
-			List<Integer> list = new ArrayList<Integer>();
-			if (index != 0) {
-				list.add(arr[index - 1]);
-			}
-			if (index != arr.length - 1) {
-				list.add(arr[index + 1]);
-			}
-			adjancency.put(arr[index], list);
-		}
-
-		System.out.println("Adjacency map : " + adjancency);
-		
-		Map<Integer, List<Integer>> nonAdjacencyMap = new HashMap<Integer, List<Integer>>();
-		adjancency.entrySet().stream().forEach(entry -> {
-			List<Integer> cloned = new ArrayList<>(arrList);
-			cloned.remove(entry.getKey());
-			cloned.removeAll(entry.getValue());
-			nonAdjacencyMap.put(entry.getKey(), cloned);
-		});
-		System.out.println("Non Adjacency data is below: " + nonAdjacencyMap);		
-		
 		return maxSum;
 	}
 
