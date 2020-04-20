@@ -6,46 +6,21 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Solution {
 
 	// Complete the maxSubsetSum function below.
 	static int maxSubsetSum(int[] arr) {
-
-		List<Integer> arrList = Arrays.stream(arr).boxed().collect(Collectors.toList());
-		System.out.println("Input : " + arrList);	
-		
-		int exc = 0;
-		int inc = 0;
-		int maxSum =0;
-		
-		for(int index : arr) {
-			inc = exc + index;
-			if (max(exc, inc) > maxSum) {
-				maxSum = max(exc, inc);
-			}
-			
-			exc = inc;
+		int excl = 0;
+		int incl = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			int temp = incl;
+			incl = Math.max(excl + arr[i], incl);
+			excl = temp;
 		}
-		return maxSum;
+		return incl;
 	}
-	
-	
-
-	private static int max(int exc, int inc) {
-		if(exc > inc) {
-			return exc;
-		}
-		else {
-			return inc;
-		}
-	}
-
-
 
 	private static final Scanner scanner = new Scanner(System.in);
 
