@@ -12,14 +12,19 @@ public class Solution {
 
 	// Complete the maxSubsetSum function below.
 	static int maxSubsetSum(int[] arr) {
-		int excl = 0;
-		int incl = arr[0];
+		int exc = 0;
+		int inc = arr[0];
+		// -2 1 3 -4 5
+		// inc - 2
+		// exc 0
 		for (int i = 1; i < arr.length; i++) {
-			int temp = incl;
-			incl = Math.max(excl + arr[i], incl);
-			excl = temp;
+			int temp = inc;
+			inc = Math.max(exc + arr[i], inc);
+			exc = temp;
+			System.out.println(inc + "       " + exc);
+
 		}
-		return incl;
+		return inc;
 	}
 
 	private static final Scanner scanner = new Scanner(System.in);
