@@ -14,17 +14,13 @@ public class Solution {
 	static int maxSubsetSum(int[] arr) {
 		int exc = 0;
 		int inc = arr[0];
-		// -2 1 3 -4 5
-		// inc - 2
-		// exc 0
+
 		for (int i = 1; i < arr.length; i++) {
 			int temp = inc;
 			inc = Math.max(exc + arr[i], inc);
 			if(temp > 0) {
 				exc = temp;
 			}
-			System.out.println(inc + "       " + exc);
-
 		}
 		return inc;
 	}
