@@ -7,6 +7,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Solution {
 
@@ -22,9 +33,8 @@ public class Solution {
 				exc = temp;
 			}
 		}
-		return inc;
 	}
-
+  
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {
