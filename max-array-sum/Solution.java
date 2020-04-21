@@ -20,7 +20,9 @@ public class Solution {
 		for (int i = 1; i < arr.length; i++) {
 			int temp = inc;
 			inc = Math.max(exc + arr[i], inc);
-			exc = temp;
+			if(temp > 0) {
+				exc = temp;
+			}
 			System.out.println(inc + "       " + exc);
 
 		}
