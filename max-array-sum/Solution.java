@@ -23,6 +23,7 @@ public class Solution {
 			}
 		}
 		return inc;
+
 	}
 
 	private static final Scanner scanner = new Scanner(System.in);
